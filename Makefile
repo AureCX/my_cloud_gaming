@@ -31,16 +31,16 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 clean:
 	$(RM) $(OBJ)
 
-fclean: clean
-	$(RM) $(BUILD_DIR)/$(NAME)
-	$(RM) -d $(BUILD_DIR)
-
 clean_tmp:
 	$(RM) *~ && $(RM) $(BUILD_DIR)/*~ && $(RM) $(SRC_DIR)/*~
+
+fclean: clean clean_tmp
+	$(RM) $(BUILD_DIR)/$(NAME)
+	$(RM) -rd $(BUILD_DIR)
 
 re:	fclean all
 
 multi:	fclean
 	$(MAKE) -j16
 
-.PHONY: all $(NAME) clean fclean re multi
+.PHONY: all $(NAME) clean clean_tmp fclean re multi

@@ -3,6 +3,7 @@
 
 int main(void)
 {
-    puts("CloudSaves skeleton OK");
+    if (open_save_xenia() == 0)
+        puts("CloudSaves skeleton OK");
     return 0;
 }
